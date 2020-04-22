@@ -1,12 +1,18 @@
 <?php
 
 // Connect to a database
-$conn - mysqli_connect('localhost', 'root', '', 'ajaxtest');
-echo 'Processing...';
+// db variables
+    $dbhost = 'localhost';
+    $dbuser = 'root';
+    $dbpassword = '';
+    $dbname = 'ajaxtest';
+ $conn = new mysqli( $dbhost, $dbuser, $dbpassword,  $dbname) or die("Unable to connect");
 
+ echo "DB Connected";
+ 
 // Check for POST variable
 if(isset($_POST['name'])){
-    $name = mysqli_real_string($conn, $_POST['name']);
+    $name = ($conn, $_POST['name']);
     // echo 'POST: Your name is '.$_POST['name'];
 
     $query = "INSERT INTO users(name) VALUES('$name')";
@@ -19,8 +25,8 @@ if(isset($_POST['name'])){
 }
 
 // Check for GET variable
-if(isset($_GET['name'])){
-    echo 'GET: Your name is '.$_GET['name'];
-}
+// if(isset($_POST['name'])){
+//     echo 'POST: Your name is '.$_POST['name'];
+// }
 
 ?>
